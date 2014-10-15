@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Store Inventory</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+		<script type="text/javascript" src="/js/util.js"></script>
+	</head>
+
+	<body>
+
+  		<h1>Stock Prices - Pebble</h1>
+
+  		<table>
+   			<thead>
+	    		<tr>
+	     			<th>#</th>
+	     			<th>Brand</th>
+	     			<th>Name</th>
+	     			<th>Price</th>
+	     			<th>Quantity</th>
+	    		</tr>
+   			</thead>
+   			<tbody>
+			{% for item in items %}
+    			<tr class="{% if loop.index is even %}even{% else %}odd{% endif %}">
+     				<td>{{loop.index}}</td>
+     				<td>
+      					<a href="/brands/{{item.brand}}">{{item.brand}}</a>
+     				</td>
+     				<td>
+     					<a href="/item/{{item.name}}">{{item.name}}</a>
+     				</td>
+     				<td>
+      					<strong>{{item.price}}</strong>
+     				</td>
+     				{% if item.quantity == 0 %}
+     					<td class="minus">{{item.quantity}}</td>
+     				{% else %}
+     					<td>{{item.quantity}}</td>
+     				{% endif %}
+    			</tr>
+			{% endfor %}
+   			</tbody>
+  		</table>
+ 	</body>
+</html>
