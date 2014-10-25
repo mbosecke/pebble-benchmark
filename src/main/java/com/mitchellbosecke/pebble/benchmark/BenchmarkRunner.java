@@ -42,7 +42,7 @@ public final class BenchmarkRunner {
 		System.out.println(String.format("Number of reps per trial: %d", reps));
 		System.out.println("===============================");
 
-		// do one trial of each benchmark just to warm up
+		// warmup trials
 		for (int warmup = 0; warmup < this.numberOfWarmupTrials; warmup++) {
 			for (Benchmark benchmark : benchmarks) {
 				timeBenchmark(benchmark);

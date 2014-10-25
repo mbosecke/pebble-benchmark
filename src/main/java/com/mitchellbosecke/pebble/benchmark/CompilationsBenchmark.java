@@ -7,6 +7,8 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 public class CompilationsBenchmark implements Benchmark {
 
 	private PebbleEngine engine;
+	
+	private final String templateName = "stocks.pebble";
 
 	public void run(int reps) {
 
@@ -15,7 +17,7 @@ public class CompilationsBenchmark implements Benchmark {
 
 		for (int i = 0; i < reps; i++) {
 			try {
-				template = engine.getTemplate("stocks.pebble");
+				template = engine.getTemplate(templateName);
 			} catch (PebbleException e) {
 				throw new RuntimeException(e);
 			}
