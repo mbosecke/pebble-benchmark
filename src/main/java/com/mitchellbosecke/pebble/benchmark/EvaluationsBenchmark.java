@@ -11,38 +11,38 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 
 public class EvaluationsBenchmark implements Benchmark {
 
-	private Map<String, Object> context;
-	
-	private PebbleTemplate template;
+    private Map<String, Object> context;
 
-	public void run(int reps) {
+    private PebbleTemplate template;
 
-		Map<String, Object> context = this.context;
+    public void run(int reps) {
 
-		try {
-			for (int i = 0; i < reps; i++) {
-				template.evaluate(new StringWriter(), context);
-			}
-		} catch (Exception ex) {
-			throw new RuntimeException(ex);
-		}
-	}
+        Map<String, Object> context = this.context;
 
-	@Override
-	public void setup() {
-		PebbleEngine engine = new PebbleEngine();
-		engine.getLoader().setPrefix("templates");
-		engine.getLoader().setSuffix(".html");
-		
-		// compile the template once so that it's cached
-		try {
-			template = engine.getTemplate("stocks.pebble");
-		} catch (PebbleException e) {
-			e.printStackTrace();
-		}
+        try {
+            for (int i = 0; i < reps; i++) {
+                template.evaluate(new StringWriter(), context);
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
-		this.context = new HashMap<>();
-		context.put("items", Stock.dummyItems());
-	}
+    @Override
+    public void setup() {
+        PebbleEngine engine = new PebbleEngine();
+        engine.getLoader().setPrefix("templates");
+        engine.getLoader().setSuffix(".html");
+
+        // compile the template once so that it's cached
+        try {
+            template = engine.getTemplate("stocks.pebble");
+        } catch (PebbleException e) {
+            e.printStackTrace();
+        }
+
+        this.context = new HashMap<>();
+        context.put("items", Stock.dummyItems());
+    }
 
 }
