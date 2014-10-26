@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	{% block head %} 
+		<title>Benchmark Website - Pebble</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+		<script type="text/javascript" src="/js/util.js"></script>
+		<style type="text/css">
+		</style>
+	{% endblock %}
+</head>
+
+<body>
+
+	<h1>{% block title %}{% endblock %}</h1>
+
+	{% parallel %}
+	{% include 'navigation' %}
+	{% endparallel %} 
+	
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div> 
+	
+	{% parallel %}
+	{% include 'footer' %}
+	{% endparallel %}
+
+</body>
+</html>

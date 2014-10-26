@@ -15,6 +15,8 @@ public class EvaluationsBenchmark implements Benchmark {
 
     private PebbleTemplate template;
 
+    private final String templateName = "listing";
+
     public void run(int reps) {
 
         Map<String, Object> context = this.context;
@@ -36,7 +38,7 @@ public class EvaluationsBenchmark implements Benchmark {
 
         // compile the template once so that it's cached
         try {
-            template = engine.getTemplate("stocks.pebble");
+            template = engine.getTemplate(templateName);
         } catch (PebbleException e) {
             e.printStackTrace();
         }

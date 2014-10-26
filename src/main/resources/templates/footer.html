@@ -1,0 +1,17 @@
+<footer>
+	&copy; 1234 Company Name
+	
+	<ul class="external-links">
+		{{ externalLink('http://www.link-1.com', 'Link 1') }}
+		{{ externalLink('http://www.link-2.com', 'Link 2') }}
+		{{ externalLink('http://www.link-3.com', 'Link 3') }}
+		{{ externalLink('http://www.link-4.com', 'Link 4') }}
+		{{ externalLink('http://www.link-5.com', 'Link 5') }}
+	</ul>
+
+</footer>
+
+
+{% macro externalLink(url, name) %}
+	<li><a href="{{ url }}">{{ name }}</a></li>
+{% endmacro %}

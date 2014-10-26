@@ -1,0 +1,16 @@
+<div id="navigation-container">
+	
+	<ul class="navigation">
+		{{ navigationItem('http://www.link-1.com', 'Link 1') }}
+		{{ navigationItem('http://www.link-2.com', 'Link 2') }}
+		{{ navigationItem('http://www.link-3.com', 'Link 3') }}
+		{{ navigationItem('http://www.link-4.com', 'Link 4') }}
+		{{ navigationItem('http://www.link-5.com', 'Link 5') }}
+	</ul>
+
+</div>
+
+
+{% macro navigationItem(url, name) %}
+	<li><a href="{{ url }}">{{ name }}</a></li>
+{% endmacro %}

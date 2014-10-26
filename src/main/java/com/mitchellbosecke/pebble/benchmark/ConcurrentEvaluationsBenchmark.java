@@ -12,39 +12,41 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 
 public class ConcurrentEvaluationsBenchmark implements Benchmark {
 
-	private Map<String, Object> context;
-	
-	private PebbleTemplate template;
+    private Map<String, Object> context;
 
-	public void run(int reps) {
+    private PebbleTemplate template;
 
-		Map<String, Object> context = this.context;
+    private final String templateName = "listing";
 
-		try {
-			for (int i = 0; i < reps; i++) {
-				template.evaluate(new StringWriter(), context);
-			}
-		} catch (Exception ex) {
-			throw new RuntimeException(ex);
-		}
-	}
+    public void run(int reps) {
 
-	@Override
-	public void setup() {
-		PebbleEngine engine = new PebbleEngine();
-		engine.getLoader().setPrefix("templates");
-		engine.getLoader().setSuffix(".html");
-		engine.setExecutorService(Executors.newFixedThreadPool(20));
-		
-		// compile the template once so that it's cached
-		try {
-			template = engine.getTemplate("stocks.pebble");
-		} catch (PebbleException e) {
-			e.printStackTrace();
-		}
+        Map<String, Object> context = this.context;
 
-		this.context = new HashMap<>();
-		context.put("items", Stock.dummyItems());
-	}
+        try {
+            for (int i = 0; i < reps; i++) {
+                template.evaluate(new StringWriter(), context);
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @Override
+    public void setup() {
+        PebbleEngine engine = new PebbleEngine();
+        engine.getLoader().setPrefix("templates");
+        engine.getLoader().setSuffix(".html");
+        engine.setExecutorService(Executors.newFixedThreadPool(4));
+
+        // compile the template once so that it's cached
+        try {
+            template = engine.getTemplate(templateName);
+        } catch (PebbleException e) {
+            e.printStackTrace();
+        }
+
+        this.context = new HashMap<>();
+        context.put("items", Stock.dummyItems());
+    }
 
 }

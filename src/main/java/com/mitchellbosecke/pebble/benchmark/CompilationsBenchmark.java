@@ -6,30 +6,30 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 
 public class CompilationsBenchmark implements Benchmark {
 
-	private PebbleEngine engine;
-	
-	private final String templateName = "stocks.pebble";
+    private PebbleEngine engine;
 
-	public void run(int reps) {
+    private final String templateName = "listing";
 
-		@SuppressWarnings("unused")
-		PebbleTemplate template;
+    public void run(int reps) {
 
-		for (int i = 0; i < reps; i++) {
-			try {
-				template = engine.getTemplate(templateName);
-			} catch (PebbleException e) {
-				throw new RuntimeException(e);
-			}
-		}
-	}
+        @SuppressWarnings("unused")
+        PebbleTemplate template;
 
-	@Override
-	public void setup() {
-		this.engine = new PebbleEngine();
-		engine.getLoader().setPrefix("templates");
-		engine.getLoader().setSuffix(".html");
-		engine.setTemplateCache(null);
-	}
+        for (int i = 0; i < reps; i++) {
+            try {
+                template = engine.getTemplate(templateName);
+            } catch (PebbleException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @Override
+    public void setup() {
+        this.engine = new PebbleEngine();
+        engine.getLoader().setPrefix("templates");
+        engine.getLoader().setSuffix(".html");
+        engine.setTemplateCache(null);
+    }
 
 }
