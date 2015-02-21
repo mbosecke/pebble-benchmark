@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.mitchellbosecke.pebble.PebbleEngine;
+
 public final class BenchmarkRunner {
 
     private final int trials;
