@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
@@ -17,7 +15,6 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
@@ -31,34 +28,20 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @State(Scope.Benchmark)
-public class ConcurrentEvaluationsBenchmark {
+public class EvaluationBenchmark {
 
     private Map<String, Object> context;
-
     private PebbleTemplate template;
-
-    private final String templateName = "listing";
-
-    private ExecutorService executor;
-
-    @Benchmark
-    public String concurrentEvaluationsBenchmark() throws PebbleException, IOException {
-        StringWriter writer = new StringWriter();
-        template.evaluate(writer, context);
-        return writer.toString();
-    }
 
     @Setup
     public void setup() {
-        this.executor = Executors.newFixedThreadPool(4);
         PebbleEngine engine = new PebbleEngine();
         engine.getLoader().setPrefix("templates");
         engine.getLoader().setSuffix(".html");
-        engine.setExecutorService(executor);
 
         // compile the template once so that it's cached
         try {
-            template = engine.getTemplate(templateName);
+            template = engine.getTemplate("listing");
         } catch (PebbleException e) {
             e.printStackTrace();
         }
@@ -67,9 +50,11 @@ public class ConcurrentEvaluationsBenchmark {
         context.put("items", Stock.dummyItems());
     }
 
-    @TearDown
-    public void tearDown() {
-        executor.shutdown();
+    @Benchmark
+    public String evaluationsBenchmark() throws PebbleException, IOException {
+        StringWriter writer = new StringWriter();
+        template.evaluate(writer, context);
+        return writer.toString();
     }
 
 }

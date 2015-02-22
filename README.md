@@ -4,34 +4,30 @@ pebble-benchmark
 Microbenchmark for the Pebble Templating Engine
 
 1. Download the pebble source code and build it (`mvn install`)
-2. Run the `main` method within com.mitchellbosecke.pebble.benchmark.Main
+2. Run the benchmark suite with `java -jar target/benchmarks.jar`
 
 
 Example Output
 ===============
 The following benchmark was run on a machine with the following stats:
-* OS: CentOS 7
-* Kernel: 3.10.0-123.el7.x86_64
+* OS: Mac OS X 10.10.2
 * Memory: 8GB
-* Processor: Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
+* Processor: Intel(R) Core(TM) i7 CPU @ 1.70GHz
 ````
-Starting benchmarks...
-Number of warmup trials: 2
-Number of real trials: 5
-Number of reps per trial: 10000
-===============================
-Trial 1 [CompilationsBenchmark]: There were 10000 reps, total time is 1.337889 seconds, average time per rep is 0.000134 seconds.
-Trial 1 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.878246 seconds, average time per rep is 0.000088 seconds.
-Trial 2 [CompilationsBenchmark]: There were 10000 reps, total time is 1.332065 seconds, average time per rep is 0.000133 seconds.
-Trial 2 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.865939 seconds, average time per rep is 0.000087 seconds.
-Trial 3 [CompilationsBenchmark]: There were 10000 reps, total time is 1.324533 seconds, average time per rep is 0.000132 seconds.
-Trial 3 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.866019 seconds, average time per rep is 0.000087 seconds.
-Trial 4 [CompilationsBenchmark]: There were 10000 reps, total time is 1.335623 seconds, average time per rep is 0.000134 seconds.
-Trial 4 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.877653 seconds, average time per rep is 0.000088 seconds.
-Trial 5 [CompilationsBenchmark]: There were 10000 reps, total time is 1.327553 seconds, average time per rep is 0.000133 seconds.
-Trial 5 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.867742 seconds, average time per rep is 0.000087 seconds.
-===============================
-Benchmarks completed. Average total time for each benchmark:
-EvaluationsBenchmark: 0.871120
-CompilationsBenchmark: 1.331533
+# JMH 1.6.1 (released 2 days ago)
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.mitchellbosecke.pebble.benchmark.CompilationBenchmark.compilationsBenchmark
+(...)
+# Run complete. Total time: 00:02:37
+
+Benchmark                                                      Mode  Cnt    Score    Error  Units
+CompilationBenchmark.compilationsBenchmark                     avgt   25  281.385 ± 16.386  us/op
+ConcurrentEvaluationsBenchmark.concurrentEvaluationsBenchmark  avgt   25  168.001 ± 16.380  us/op
+EvaluationBenchmark.evaluationsBenchmark                       avgt   25   97.650 ±  1.289  us/op
 ````
