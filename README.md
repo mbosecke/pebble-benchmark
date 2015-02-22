@@ -20,18 +20,18 @@ Number of warmup trials: 2
 Number of real trials: 5
 Number of reps per trial: 10000
 ===============================
-Trial 1 [CompilationsBenchmark]: There were 10000 reps, total time is 2.372458 seconds, average time per rep is 0.000237 seconds.
-Trial 1 [EvaluationsBenchmark]: There were 10000 reps, total time is 1.029616 seconds, average time per rep is 0.000103 seconds.
-Trial 2 [CompilationsBenchmark]: There were 10000 reps, total time is 2.368664 seconds, average time per rep is 0.000237 seconds.
-Trial 2 [EvaluationsBenchmark]: There were 10000 reps, total time is 1.034023 seconds, average time per rep is 0.000103 seconds.
-Trial 3 [CompilationsBenchmark]: There were 10000 reps, total time is 2.378305 seconds, average time per rep is 0.000238 seconds.
-Trial 3 [EvaluationsBenchmark]: There were 10000 reps, total time is 1.028683 seconds, average time per rep is 0.000103 seconds.
-Trial 4 [CompilationsBenchmark]: There were 10000 reps, total time is 2.374699 seconds, average time per rep is 0.000237 seconds.
-Trial 4 [EvaluationsBenchmark]: There were 10000 reps, total time is 1.041157 seconds, average time per rep is 0.000104 seconds.
-Trial 5 [CompilationsBenchmark]: There were 10000 reps, total time is 2.380745 seconds, average time per rep is 0.000238 seconds.
-Trial 5 [EvaluationsBenchmark]: There were 10000 reps, total time is 1.032206 seconds, average time per rep is 0.000103 seconds.
+Trial 1 [CompilationsBenchmark]: There were 10000 reps, total time is 1.337889 seconds, average time per rep is 0.000134 seconds.
+Trial 1 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.878246 seconds, average time per rep is 0.000088 seconds.
+Trial 2 [CompilationsBenchmark]: There were 10000 reps, total time is 1.332065 seconds, average time per rep is 0.000133 seconds.
+Trial 2 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.865939 seconds, average time per rep is 0.000087 seconds.
+Trial 3 [CompilationsBenchmark]: There were 10000 reps, total time is 1.324533 seconds, average time per rep is 0.000132 seconds.
+Trial 3 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.866019 seconds, average time per rep is 0.000087 seconds.
+Trial 4 [CompilationsBenchmark]: There were 10000 reps, total time is 1.335623 seconds, average time per rep is 0.000134 seconds.
+Trial 4 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.877653 seconds, average time per rep is 0.000088 seconds.
+Trial 5 [CompilationsBenchmark]: There were 10000 reps, total time is 1.327553 seconds, average time per rep is 0.000133 seconds.
+Trial 5 [EvaluationsBenchmark]: There were 10000 reps, total time is 0.867742 seconds, average time per rep is 0.000087 seconds.
 ===============================
 Benchmarks completed. Average total time for each benchmark:
-EvaluationsBenchmark: 1.033137
-CompilationsBenchmark: 2.374974
+EvaluationsBenchmark: 0.871120
+CompilationsBenchmark: 1.331533
 ````
