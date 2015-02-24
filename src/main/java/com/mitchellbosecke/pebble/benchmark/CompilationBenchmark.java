@@ -20,8 +20,8 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 @Fork(5)
 @Measurement(iterations = 5)
 @Warmup(iterations = 5)
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@BenchmarkMode(Mode.Throughput)
+@OutputTimeUnit(TimeUnit.SECONDS)
 @State(Scope.Benchmark)
 public class CompilationBenchmark {
 
