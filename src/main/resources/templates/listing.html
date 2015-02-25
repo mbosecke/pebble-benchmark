@@ -22,7 +22,7 @@
 	<tbody>
 		{% for item in items %} 
 		{% parallel %}
-		<tr class="{% if loop.index is even %}even{% else %}odd{% endif %}">
+		<tr class="{% if loop.index % 2 == 0 %}even{% else %}odd{% endif %}">
 			<td style="text-align: center">{{loop.index}}</td>
 			<td><a href="/stocks/{{item.symbol}}">{{item.symbol}}</a></td>
 			<td><a href="{{item.url}}">{{item.name}}</a></td>

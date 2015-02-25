@@ -11,7 +11,7 @@
 		
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <pebble.version>1.4.1</pebble.version>
+        <pebble.version>1.4.2-SNAPSHOT</pebble.version>
         <jmh.version>1.6.1</jmh.version>
         <uberjar.name>benchmarks</uberjar.name>
 	</properties>
